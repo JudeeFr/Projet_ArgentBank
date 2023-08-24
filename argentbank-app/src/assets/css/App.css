@@ -63,3 +63,12 @@
     transform: rotate(360deg);
   }
 }
+
+.grid {
+  width: 80%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 300px auto 200px 200px 100px;
+  padding: 15px;
+  text-align: left;
+}
