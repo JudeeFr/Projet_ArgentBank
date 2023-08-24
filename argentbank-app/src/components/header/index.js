@@ -19,6 +19,10 @@ export default function Header() {
                 <i className="fa fa-user-circle"></i>
                 Sign In
             </Link>
+            <Link to="#" className="main-nav-item">
+                <i className="fa fa-sign-out"></i>
+                Sign out
+            </Link> 
         </div>
         </nav>
     </div>

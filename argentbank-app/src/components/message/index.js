@@ -1,0 +1,12 @@
+import React  from 'react';
+import './style.css';
+
+
+export default function Message() {
+    return (
+        <div className="message">
+        <h1>Welcome back<br />Tony Jarvis!</h1>
+        <button className="edit-button">Edit Name</button>
+      </div>
+    );
+  }

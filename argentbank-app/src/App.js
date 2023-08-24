@@ -3,6 +3,7 @@ import './assets/css/App.css';
 import Home from './pages/home';
 import User from './pages/user';
 import Login from './pages/login';
+import Transactions from './pages/transactions'
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
@@ -20,11 +21,16 @@ const router = createBrowserRouter([
 		path: 'login',
 		element: <Login />,
 	},
+	{
+		path: 'transactions',
+		// path: 'transactions/:id',
+		element: <Transactions />,
+	},
 ]);
 
 function App() {
   return (
-		<div >
+		<div>
 			<RouterProvider router={router} />
 		</div>
 	);
