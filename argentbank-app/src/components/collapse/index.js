@@ -13,7 +13,6 @@ export default function Collapse({date, description, amount, balance, type, cate
 		}
 	}, [selected]);
    
-   
     return (
         <div className='collapse-grid'>
         
@@ -52,12 +51,12 @@ export default function Collapse({date, description, amount, balance, type, cate
                     {type}
                 </div>
                 <div className='category'>
-                    {category}
-                    <i className="fa-solid fa-pencil"></i>
+                    <div>{category}</div>
+                    <i className="fa-solid fa-pencil edit"></i>
                 </div>
                 <div className='note'>
                     {note}
-                    <i className="fa-solid fa-pencil"></i>
+                    <i className="fa-solid fa-pencil edit"></i>
                 </div>
             </div>
             <div className='col-3'></div>
