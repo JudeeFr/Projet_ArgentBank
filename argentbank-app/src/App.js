@@ -1,11 +1,12 @@
 import React  from 'react';
 import './assets/css/App.css';
 import Home from './pages/home';
-import User from './pages/user';
+import Dashboard from './pages/dashboard';
 import Login from './pages/login';
 import Transactions from './pages/transactions'
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+
 
 // ajout des chemins des pages
 const router = createBrowserRouter([
@@ -14,8 +15,8 @@ const router = createBrowserRouter([
 		element: <Home />,
 	},
 	{
-		path: 'user',
-		element: <User />,
+		path: 'dashboard',
+		element: <Dashboard />,
 	},
 	{
 		path: 'login',

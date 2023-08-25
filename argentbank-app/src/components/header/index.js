@@ -4,8 +4,15 @@ import { Link } from 'react-router-dom';
 import logo from "../../assets/img/argentBankLogo.png";
 // import '../../assets/css/main.css';
 import './style.css';
+import { useNavigate } from 'react-router-dom';
 
 export default function Header() {
+    const navigate = useNavigate();
+    const onLogOut = () => {
+        localStorage.removeItem("token");
+        navigate.push("/login");
+      };
+      
   return (
     <div className='header'>
         <nav className="main-nav">
@@ -19,10 +26,10 @@ export default function Header() {
                 <i className="fa fa-user-circle"></i>
                 Sign In
             </Link>
-            <Link to="#" className="main-nav-item">
-                <i className="fa fa-sign-out"></i>
+            <div to="#" className="main-nav-item" onClick={onLogOut}>
+                <i className="fa fa-sign-out" ></i>
                 Sign out
-            </Link> 
+            </div> 
         </div>
         </nav>
     </div>

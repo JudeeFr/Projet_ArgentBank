@@ -9,13 +9,13 @@ export default function Login() {
     <div>  
       <div >   
         <Header/>
-        </div>      
-        <div className='bg-dark'>
+      </div>      
+      <div className='bg-dark'>
         <LoginForm/>  
-        </div>   
-        <div>  
+      </div>   
+      <div>  
         <Footer/>
-        </div>
+      </div>
   </div>
   );
 }
