@@ -2,43 +2,28 @@ import React, { useEffect, useState } from 'react';
 import './style.css';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { loginUser, userSelector, clearState } from '../../features/user/userSlice'
-import toast from 'react-hot-toast';
-// import { useNavigate } from 'react-router-dom';
+import { loginUser, userSelector, login } from '../../features/user/userSlice'
+
+
 
 export default function LoginForm() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
-
-  const { isFetching, isSuccess, isError, errorMessage } =
-  useSelector(userSelector);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(loginUser({
       email: email,
       password: password,
+    }));
+    dispatch(login({
+      email: email,
+      password: password,
       loggedIn: true,
     }))
   }
-    
-
-  // Update UI based on the redux state(Success or Error)
-  useEffect(() => {
-    if (isError) {
-      toast.error(errorMessage);
-      dispatch(clearState());
-    }
-
-    if (isSuccess) {
-      dispatch(clearState());
-      // navigate.push("/dashboard");
-      window.location.replace('./dashboard');
-    }
-  }, [isError, isSuccess]);
 
   return ( 
               

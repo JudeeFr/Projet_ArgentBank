@@ -2,15 +2,21 @@ import React  from 'react';
 import './style.css';
 import { Link } from 'react-router-dom';
 import logo from "../../assets/img/argentBankLogo.png";
-// import '../../assets/css/main.css';
 import './style.css';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { userSelector, logout } from '../../features/user/userSlice';
 
 export default function Header() {
+    const user = useSelector(userSelector)
+    const dispatch = useDispatch();
     const navigate = useNavigate();
-    const onLogOut = () => {
+    const handleLogout = (e) => {
+        e.preventDefault();
         localStorage.removeItem("token");
-        navigate.push("/login");
+        // ajouter la redirection
+  
+        dispatch(logout())
       };
       
   return (
@@ -21,15 +27,17 @@ export default function Header() {
                 <h1 className="sr-only">Argent Bank</h1>
             </Link>
     
-        <div>
-            <Link to="/Login" className="main-nav-item">
+        <div>{ user ? <Link to="/Login" className="main-nav-item">
                 <i className="fa fa-user-circle"></i>
                 Sign In
-            </Link>
-            <div to="#" className="main-nav-item" onClick={onLogOut}>
+            </Link> 
+            : <div to="#" className="main-nav-item" onClick={(e)=>handleLogout(e)}>
                 <i className="fa fa-sign-out" ></i>
                 Sign out
             </div> 
+            }
+            
+            
         </div>
         </nav>
     </div>

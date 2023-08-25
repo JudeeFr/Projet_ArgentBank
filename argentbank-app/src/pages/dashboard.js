@@ -4,28 +4,14 @@ import Header from '../components/header'
 import Footer from '../components/footer';
 import Account from '../components/account';
 import Edit from '../components/edit';
-// import { useNavigate } from 'react-router-dom';
 import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { userSelector, clearState } from "../features/user/userSlice";
+// import { useSelector, useDispatch } from "react-redux";
+// import { userSelector } from "../features/user/userSlice";
 
 
 const Dashboard = () => {
-  // const navigate = useNavigate();
-
-  const dispatch = useDispatch();
-  const { isFetching, isError } = useSelector(userSelector);
   
-  // useEffect(() => {
-  //   dispatch(fetchUserBytoken({ token: localStorage.getItem("token") }));
-  // }, []);
-
-  useEffect(() => {
-    if (isError) {
-      dispatch(clearState());
-      window.location.replace('./login');
-    }
-  }, [isError]);
+  // const dispatch = useDispatch();
 
 //   const navigate = useNavigate();
 //  ajout de la fonction pour afficher la page selon l'id du compte 

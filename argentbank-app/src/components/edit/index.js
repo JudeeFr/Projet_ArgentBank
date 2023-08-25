@@ -1,35 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import './style.css';
-import { useNavigate } from 'react-router-dom';
-import { userSelector, clearState } from '../../features/user/userSlice'
-import { useSelector, useDispatch } from 'react-redux';
-import toast from 'react-hot-toast';
+// import { useNavigate } from 'react-router-dom';
+// import { userSelector, login, logout } from '../../features/user/userSlice'
+// import { useSelector, useDispatch } from 'react-redux';
+
 
 export default function Edit() {
   const [edit, setEdit] = useState(false);
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
+  // const navigate = useNavigate();
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-		if (edit) {setEdit(true)}
-	}, [edit]);
+  // useEffect(() => {
+	// 	if (edit) {setEdit(true)}
+	// }, [edit]);
   
-  const { isFetching, isSuccess, isError, errorMessage } =
-  useSelector(userSelector);
+  // const { login } =
+  // useSelector(userSelector);
 
-  const { username, email } = useSelector(userSelector);
+  // const { username, email } = useSelector(userSelector);
   
-  useEffect(() => {
-    if (isError) {
-      toast.error(errorMessage);
-      dispatch(clearState());
-    }
-
-    if (isSuccess) {
-      dispatch(clearState());
-      // navigate.push("/dashboard");
-    }
-  }, [isError, isSuccess]);
 
   return (
       <div>
@@ -62,7 +51,7 @@ export default function Edit() {
             </div>
           </form>
           <div className="message" style={{ display: !edit ? '' : 'none' }}>
-            <h1>Welcome back<br /><span>{username}!</span></h1>
+            <h1>Welcome back<br /><span>username</span></h1>
             <button 
             className="edit-button" 
             onClick={() => setEdit(!edit)}>
