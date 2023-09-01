@@ -4,13 +4,19 @@ import Header from '../components/header'
 import Footer from '../components/footer';
 import Account from '../components/account';
 import Edit from '../components/edit';
-import React, { useEffect } from "react";
-// import { useSelector, useDispatch } from "react-redux";
-// import { userSelector } from "../features/user/userSlice";
+import React from "react";
+import { useSelector} from "react-redux";
+import { Navigate } from 'react-router-dom'
 
 
 const Dashboard = () => {
+  const selectUser = (state) => state.user.user.body
+  const user = useSelector(selectUser)
   
+  
+  if (user === undefined) {
+    return <Navigate to="/" />
+  }
   // const dispatch = useDispatch();
 
 //   const navigate = useNavigate();

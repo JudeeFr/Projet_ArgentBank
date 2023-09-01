@@ -1,32 +1,30 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux'
+import { getToken } from '../../app/Api';
 import './style.css';
-import { useSelector, useDispatch } from 'react-redux';
-
-import { loginUser, userSelector, login } from '../../features/user/userSlice'
-
-
+import { Navigate } from "react-router-dom";
+import Header from '../header';
+import Footer from '../footer';
 
 export default function LoginForm() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-
+ 
   const dispatch = useDispatch();
+  const message = useSelector((state) => state.user.user.status)
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    dispatch(loginUser({
-      email: email,
-      password: password,
-    }));
-    dispatch(login({
-      email: email,
-      password: password,
-      loggedIn: true,
-    }))
-  }
-
+    e.preventDefault()
+      dispatch(getToken(email, password))
+    }
+    if (message === 200) {
+      return < Navigate to="/dashboard" />
+    }
   return ( 
-              
+    <div>
+        <div>
+        <Header />
+        </div>
       <div className="sign-in-content">
         <i className="fa fa-user-circle sign-in-icon"></i>
         <h1>Sign In</h1>
@@ -57,10 +55,13 @@ export default function LoginForm() {
             type="checkbox" 
             id="remember-me" />
             <label for="remember-me">Remember me</label>
-          </div>         
+          </div>  
           <button className="sign-in-button" type='submit'>Sign In</button>              
         </form>
       </div>  
-          
+      <div>
+      <Footer/>
+      </div>
+          </div>
     );
   }

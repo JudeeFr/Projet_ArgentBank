@@ -1,24 +1,24 @@
+
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-export const loginUser = createAsyncThunk(
-  'user/login',
-  async ({ email, password }, thunkAPI) => {
+export const userProfile = createAsyncThunk(
+  'user/profile',
+  async ({id, email }, thunkAPI) => {
     try {     
       const response = await fetch(
-        'http://localhost:3001/api/v1/user/login',
+        'http://localhost:3001/api/v1/user/profile',
         {
           method: 'POST',
           headers: {
             Accept: 'application/json',
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ email: email, password: password }),
+          body: JSON.stringify({ id: id, email: email }),
         }
       );
       let data = await response.json();
       console.log('response', data);
       if (response.status === 200) {
-        localStorage.setItem('token', data.token);
         return data;
       } else {
         return thunkAPI.rejectWithValue(data);
@@ -30,24 +30,22 @@ export const loginUser = createAsyncThunk(
   }
 );
 
-export const userSlice = createSlice({
-  name: 'user',
+export const profileSlice = createSlice({
+  name: 'profile',
   initialState: {
-    email: null,
+    email: {email},
   },
   reducers: {
-    login: (state, action) => {
-      state.user = action.payload ;
+    profile: (state, action) => {
+      state.profile = action.payload ;
     },
-    logout: (state) => {
-      state.user = null;
-    }
+    
   },
 
 });
 
-export const { login, logout } = userSlice.actions;
+export const { profile } = profileSlice.actions;
 
-export const userSelector = (state) => state.user.user;
+export const profileSelector = (state) => state.profile;
 
-export const userReducer = userSlice.reducer;
+export const profileReducer = profileSlice.reducer;

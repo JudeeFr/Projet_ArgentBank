@@ -1,25 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import { useSelector} from "react-redux";
 import './style.css';
-// import { useNavigate } from 'react-router-dom';
-// import { userSelector, login, logout } from '../../features/user/userSlice'
-// import { useSelector, useDispatch } from 'react-redux';
-
 
 export default function Edit() {
   const [edit, setEdit] = useState(false);
-  // const navigate = useNavigate();
-  // const dispatch = useDispatch();
+  const selectUser = (state) => state.user.user
+  const user = useSelector(selectUser)
 
-  // useEffect(() => {
-	// 	if (edit) {setEdit(true)}
-	// }, [edit]);
   
-  // const { login } =
-  // useSelector(userSelector);
-
-  // const { username, email } = useSelector(userSelector);
-  
-
   return (
       <div>
           <form style={{ display: !edit ? 'none' : '' }} 
@@ -51,7 +39,7 @@ export default function Edit() {
             </div>
           </form>
           <div className="message" style={{ display: !edit ? '' : 'none' }}>
-            <h1>Welcome back<br /><span>username</span></h1>
+            <h1>Welcome back<br /><span>{user.body.firstName}</span></h1>
             <button 
             className="edit-button" 
             onClick={() => setEdit(!edit)}>
