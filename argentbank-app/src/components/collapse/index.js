@@ -7,7 +7,6 @@ export default function Collapse({date, description, amount, balance, type, cate
 	const [firstClick, setFirstClick] = useState(false);
 
 	useEffect(() => {
-		// on initialise le firstClick a true au moment ou on detecte le premier click
 		if (selected && !firstClick) {
 			setFirstClick(true);
 		}

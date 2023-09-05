@@ -1,6 +1,8 @@
-import { createReducer } from '@reduxjs/toolkit'
-import { logOut } from '../actions/logout.action'
-import { getUser, getUserSuccess, getUserError } from '../actions/getuser.action'
+import { createReducer } from '@reduxjs/toolkit';
+import { logOut } from '../actions/logout.action';
+import { getUser, getUserSuccess, getUserError } from '../actions/getuser.action';
+import { editUser, editUserSuccess, editUserError } from '../actions/edituser.action';
+
 
 const initialStateUser = {
   isLoading: false,
@@ -36,5 +38,20 @@ export const userReducer = createReducer(initialStateUser, (builder) => {
       draft.error = action.payload
       return
     })
-    
+    .addCase(editUser, (draft) => {
+      draft.isLoading = true
+      return
+    })
+    .addCase(editUserSuccess, (draft, action) => {
+      draft.isLoading = false
+      draft.user = action.payload
+      draft.error = ''
+      return
+    })
+    .addCase(editUserError, (draft, action) => {
+      draft.isLoading = false
+      draft.user = {}
+      draft.error = action.payload
+      return
+    })
 })

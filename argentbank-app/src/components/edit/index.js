@@ -1,49 +1,77 @@
 import React, { useState } from 'react';
-import { useSelector} from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import './style.css';
+import { editProfile } from '../../app/Api';
+
 
 export default function Edit() {
-  const [edit, setEdit] = useState(false);
+  const [showEdit, setShowEdit] = useState(false);
+  
+  const [newUsername, setNewUsername] = useState('')
+ 
   const selectUser = (state) => state.user.user
   const user = useSelector(selectUser)
 
-  
+  const dispatch = useDispatch()
+
+  const edit = () => {
+    dispatch(editProfile(newUsername))
+    var msg="Your Username has been modified, please log in again.";
+       alert(msg);
+  }
+
   return (
       <div>
-          <form style={{ display: !edit ? 'none' : '' }} 
+          <form style={{ display: !showEdit ? 'none' : '' }} 
               className="edit-form">
                 <h1>Edit user info</h1>
             <div className="input-wrapper">
               <label for="username">Username</label>
-              <input type="text" id="username" />
+              <input 
+                id="username" 
+                value={newUsername}
+                placeholder={user.body.userName}
+                type="text"
+                onChange={(e) => {
+                setNewUsername(e.target.value)}}/>
             </div>
             <div className="input-wrapper">
               <label for="first name">First Name</label>
-              <input type="text" id="firstname" />
+              <input 
+              type="text" 
+              id="firstname" 
+              placeholder={user.body.firstName}
+              disabled="disabled" />
             </div>
             <div className="input-wrapper">
               <label for="last name">Last Name</label>
-              <input type="text" id="lastname" />
+              <input 
+              type="text" 
+              id="lastname"
+              placeholder={user.body.lastName} 
+              disabled="disabled"/>
             </div>
             <div className='buttons'>
               <button 
+              type='submit'
               className="edit-button" 
-              onClick={""}>
+              onClick={edit}>
                 Save
               </button>
               <button 
+              type='button'
               className="edit-button" 
-              onClick={""}>
+              onClick={() => {setShowEdit(false)}}>
                 Cancel
               </button>
             </div>
           </form>
-          <div className="message" style={{ display: !edit ? '' : 'none' }}>
+          <div className="message" style={{ display: !showEdit ? '' : 'none' }}>
             <h1>Welcome back<br /><span>{user.body.firstName}</span></h1>
             <button 
             className="edit-button" 
-            onClick={() => setEdit(!edit)}>
-              Edit Name
+            onClick={() => setShowEdit(!showEdit)}>
+              Edit Username
             </button>
         </div>
       </div>

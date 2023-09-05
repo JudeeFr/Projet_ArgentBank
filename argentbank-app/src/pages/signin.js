@@ -5,13 +5,14 @@ import LoginForm from '../components/login-form';
 import Dashboard from '../pages/dashboard'
 
 export default function Login() {
-  const selectLogin = (state) => state.user.isLogged
-  const login = useSelector(selectLogin)
+  
+  const Logged = (state) => state.user.isLogged
+  const isLogged = useSelector(Logged)
 
   return (
     <div>  
      
-        { login ? <Dashboard/> : <LoginForm/>}
+        { isLogged ? <Dashboard/> : <LoginForm/>}
         
     
   </div>

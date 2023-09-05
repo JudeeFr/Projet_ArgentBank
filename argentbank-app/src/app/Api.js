@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { login, loginSuccess, loginError } from '../actions/login.action';
 import { getUser, getUserSuccess, getUserError} from '../actions/getuser.action';
+import { editUser, editUserSuccess, editUserError } from '../actions/edituser.action';
 
 const URL = 'http://localhost:3001/api/v1/user/'
 
@@ -42,3 +43,24 @@ export const getProfile = (token) => {
   }
 }
 
+export const editProfile = (userName) => {
+  const token = localStorage.getItem('token')
+  return (dispatch) => {
+    dispatch(editUser())
+    axios({
+      method: 'PUT',
+      url: URL + 'profile',
+      headers: { Authorization: `Bearer ${token}` },
+      data: {
+        userName
+      },
+    })
+      .then((response) => {
+        dispatch(editUserSuccess(response.data))
+        
+      })
+      .catch((error) => {
+        dispatch(editUserError(error.message))
+      })
+  }
+}

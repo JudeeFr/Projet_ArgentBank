@@ -7,18 +7,17 @@ import { logOut } from '../../actions/logout.action';
 import './style.css';
 
 export const logout = () => {
-    localStorage.removeItem('token')
-    
+    localStorage.removeItem('token')  
     return (dispatch) => {
       dispatch(logOut())  
     } 
-
   }
-export default function Header() {
-    const dispatch = useDispatch()
 
-  const selectLogin = (state) => state.user.isLogged
-  const login = useSelector(selectLogin)
+export default function Header() {
+  const dispatch = useDispatch()
+
+  const Logged = (state) => state.user.isLogged
+  const isLogged = useSelector(Logged)
 
   const selectUser = (state) => state.user.user
   const user = useSelector(selectUser)
@@ -31,11 +30,11 @@ export default function Header() {
                 <h1 className="sr-only">Argent Bank</h1>
             </Link>
     
-        <div>{ login ? 
+        <div>{ isLogged ? 
             <div className='log-btn'>
                 <div  className="main-nav-item">
                    <Link to="/dashboard">
-                    <i class="fa fa-user-circle"></i>
+                    <i className="fa fa-user-circle"></i>
                    <p>{user.body.firstName}</p>
                    </Link>
                 </div>    

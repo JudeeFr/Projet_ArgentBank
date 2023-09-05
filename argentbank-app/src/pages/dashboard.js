@@ -10,9 +10,9 @@ import { Navigate } from 'react-router-dom'
 
 
 const Dashboard = () => {
+
   const selectUser = (state) => state.user.user.body
   const user = useSelector(selectUser)
-  
   
   if (user === undefined) {
     return <Navigate to="/" />
