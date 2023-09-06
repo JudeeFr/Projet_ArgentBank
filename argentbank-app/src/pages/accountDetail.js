@@ -3,16 +3,18 @@ import '../assets/css/App.css';
 import Header from '../components/header';
 import Footer from '../components/footer';
 import Account from '../components/account'
-// import Collapse from '../components/collapse';
-import { useParams, useNavigate } from 'react-router-dom';
+import Collapse from '../components/collapse';
+import { useParams, useNavigate, Navigate  } from 'react-router-dom';
 import accounts from '../data/accounts.json';
 import { useEffect } from 'react';
 import close from '../assets/img/close.png'
+import { useSelector } from 'react-redux';
 
 export default function AccountDetail() {
   // utilisation de la fonction filter pour afficher le compte selon l'id et de useparams pour récupérer l'id au clic de la page dashboard
 	let { id } = useParams();
 	let account = accounts.filter((account) => account.id === id)[0];
+  let transactions = account.transactions;
   // ajout du hook useEffect et usenavigate pour renvoyer sur la page erreur en cas d'id faux
 	const navigate = useNavigate();
 	useEffect(() => {
@@ -24,7 +26,11 @@ export default function AccountDetail() {
 		return null;
 	}
 
- 
+  const selectUser = (state) => state.user.user
+  const user = useSelector(selectUser)
+  if (user === undefined) {
+    return <Navigate to="/" />
+  }
   return (
     <div>  
       <div >   
@@ -57,7 +63,7 @@ export default function AccountDetail() {
         <div className='col_5'>
         </div>
       </div>
-{/*       
+      
       <div className="list">
 			{transactions.map((transaction, index) => (
 				<div key={index}>
@@ -72,7 +78,7 @@ export default function AccountDetail() {
         />
 				</div>
 			))}
-		  </div> */}
+		  </div>
         
       
       <div>  

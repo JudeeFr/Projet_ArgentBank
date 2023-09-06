@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import logo from "../../assets/img/argentBankLogo.png";
 import { useDispatch, useSelector } from 'react-redux';
 import { logOut } from '../../actions/logout.action';
-
 import './style.css';
 
 export const logout = () => {
@@ -21,7 +20,7 @@ export default function Header() {
 
   const selectUser = (state) => state.user.user
   const user = useSelector(selectUser)
-      
+     
   return (
     <div className='header'>
         <nav className="main-nav">
