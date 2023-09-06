@@ -3,7 +3,8 @@ import './assets/css/App.css';
 import Home from './pages/home';
 import Dashboard from './pages/dashboard';
 import Signin from './pages/signin';
-import Transactions from './pages/transactions'
+import AccountDetail from './pages/accountDetail';
+import Notfound from './pages/Notfound';
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
@@ -23,9 +24,12 @@ const router = createBrowserRouter([
 		element: <Signin />,
 	},
 	{
-		path: 'transactions',
-		// path: 'transactions/:id',
-		element: <Transactions />,
+		path: 'account/:id',
+		element: <AccountDetail />,
+	},
+	{
+		path: '*',
+		element: <Notfound />,
 	},
 ]);
 
