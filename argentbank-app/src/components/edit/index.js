@@ -26,7 +26,7 @@ export default function Edit() {
               className="edit-form">
                 <h1>Edit user info</h1>
             <div className="input-wrapper">
-              <label for="username">Username</label>
+              <label htmlFor="username">Username</label>
               <input 
                 id="username" 
                 value={newUsername}
@@ -36,7 +36,7 @@ export default function Edit() {
                 setNewUsername(e.target.value)}}/>
             </div>
             <div className="input-wrapper">
-              <label for="first name">First Name</label>
+              <label htmlFor="first name">First Name</label>
               <input 
               type="text" 
               id="firstname" 
@@ -44,7 +44,7 @@ export default function Edit() {
               disabled="disabled" />
             </div>
             <div className="input-wrapper">
-              <label for="last name">Last Name</label>
+              <label htmlFor="last name">Last Name</label>
               <input 
               type="text" 
               id="lastname"
