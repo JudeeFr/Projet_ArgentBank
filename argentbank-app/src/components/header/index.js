@@ -5,10 +5,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { logOut } from '../../actions/logout.action';
 import './style.css';
 
+
 export const logout = () => {
-    localStorage.removeItem('token')  
+
+    localStorage.removeItem('token');     
     return (dispatch) => {
-      dispatch(logOut())  
+      dispatch(logOut())       
     } 
   }
 

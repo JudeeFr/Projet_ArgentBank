@@ -27,7 +27,7 @@ Goals:
 ## 2. Prerequisites
 
 - [Git](https://git-scm.com/) to clone repositories
-- [Node.js v12](https://nodejs.org/en/)to run `npm` commands
+- [Node.js v12](https://nodejs.org/en/) to run `npm` commands
 - [MongoDB Community Server](https://www.mongodb.com/try/download/community) to run `database`
 
 ## 3. Install and run application
