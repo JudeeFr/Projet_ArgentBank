@@ -1,72 +1,38 @@
-# Argent Bank API
 
-This codebase contains the code needed to run the backend for Argent Bank.
+ARGENT BANK: Use an API for bank's user account with React and Redux
 
-## Getting Started
+P11 - OpenClassrooms
+Creation of a web application allowing Argent Bank's customers to log in and manage their accounts and profiles.
 
-### Prerequisites
+Goals:
 
-Argent Bank uses the following tech stack:
+Create a complete and responsive web application with react
+Use Redux to manage whole application's state
+Create an API model with a swagger.yml file for website's transactions part
 
-- [Node.js v12](https://nodejs.org/en/)
-- [MongoDB Community Server](https://www.mongodb.com/try/download/community)
+Technologies
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-hot-toast": "^2.4.1",
+    "react-redux": "^8.1.2",
+    "react-router": "^6.15.0",
+    "react-router-dom": "^6.15.0",
+    "react-scripts": "^2.1.3",
+    "redux": "^4.2.1",
 
-Please make sure you have the right versions and download both packages. You can verify this by using the following commands in your terminal:
+    "axios": "^1.4.0",
+    "bcrypt": "^5.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.1",
+    "mongodb": "^5.7.0",
+    "mongoose": "^5.13.20",
+    "swagger-ui-express": "^4.1.4",
+    "yamljs": "^0.3.0"
 
-```bash
-# Check Node.js version
-node --version
 
-# Check Mongo version
-mongo --version
-```
 
-### Instructions
 
-1. Fork this repo
-1. Clone the repo onto your computer
-1. Open a terminal window in the cloned project
-1. Run the following commands:
 
-```bash
-# Install dependencies
-npm install
 
-# Start local dev server
-npm run dev:server
-
-# Populate database with two users
-npm run populate-db
-```
-
-Your server should now be running at http://locahost:3001 and you will now have two users in your MongoDB database!
-
-## Populated Database Data
-
-Once you run the `populate-db` script, you should have two users in your database:
-
-### Tony Stark
-
-- First Name: `Tony`
-- Last Name: `Stark`
-- Email: `tony@stark.com`
-- Password: `password123`
-
-### Steve Rogers
-
-- First Name: `Steve`,
-- Last Name: `Rogers`,
-- Email: `steve@rogers.com`,
-- Password: `password456`
-
-## API Documentation
-
-To learn more about how the API works, once you have started your local environment, you can visit: http://localhost:3001/api-docs
-
-## Design Assets
-
-Static HTML and CSS has been created for most of the site and is located in: `/designs`.
-
-For some of the dynamic features, like toggling user editing, there is a mock-up for it in `/designs/wireframes/edit-user-name.png`.
-
-And for the API model that you will be proposing for transactitons, the wireframe can be found in `/designs/wireframes/transactions.png`.
