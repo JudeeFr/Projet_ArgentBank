@@ -9,16 +9,32 @@ basePath: /api/v1
 schemes:
   - http
 paths:
+  /user/accounts:
+    get:
+      security:
+        - Bearer: []
+      tags:
+        - User Accounts
+      summary: User's accounts
+      description: API for fetching a user accounts 
+      responses:
+        '200':
+          description: User accounts retrieved successully
+          schema:
+            $ref: '#/definitions/ResponseAccounts'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+          
+          
   /user/accounts/{accountId}:
     get:
       tags:
         - Account Detail
       summary: User's tansactions of current month on account id
-      description: Get user's account detail
-      consumes:
-        - application/json
-      produces:
-        - application/json
+      description: API for fetching a user account detail
+      operationId: getAccountId
       parameters:
         - name: Autorization
           in: header
@@ -53,13 +69,9 @@ paths:
     get:
       tags:
         - Transaction
-      summary: Transaction details
-      description: Get transaction details
+      summary: Get transaction details
+      description: API for fetching a transaction detail
       operationId: getTransactionId
-      consumes:
-        - application/json
-      produces:
-        - application/json
       parameters:
         - name: Autorization
           in: header
@@ -86,12 +98,8 @@ paths:
       tags:
         - Transaction
       summary: Update transaction's details
-      description: Update transaction's details
+      description: API for update a transaction detail
       operationId: upDateTransactionId
-      consumes:
-        - application/json
-      produces:
-        - application/json
       parameters:
         - name: Autorization
           in: header
@@ -125,12 +133,9 @@ paths:
     get:
       tags:
         - Categories
-      summary: Transaction categories
-      description: Get transactions categories
-      consumes:
-        - application/json
-      produces:
-        - application/json
+      summary: Get transaction categories
+      description: API for fetching Transaction categories
+      operationId: getTransactionCategories
       parameters:
         - name: Autorization
           in: header
@@ -156,6 +161,32 @@ securityDefinitions:
     name: Authorization
     in: header
 definitions: 
+  ResponseAccounts:
+    type: object
+    properties:
+      accountId:
+        type: string
+        description: account ID
+        example: uT20211105df8
+      title:
+        type: string
+        description: account title
+        example: Argent Bank Checking
+      amount:
+        type: integer
+        format: int64
+        description: account amount
+        example: 5  
+      description:
+        type: string
+        description: account description
+        example: Available Balance
+      transactions : 
+        type: array
+        items:
+          $ref: '#/definitions/TransactionsDetail'
+    xml:
+      name: Account
   ResponseTransactions:
     type: object
     properties:
@@ -170,7 +201,7 @@ definitions:
       body:
         type: array
         items:
-          $ref: '#/definitions/TransactionDetail'
+          $ref: '#/definitions/TransactionsDetail'
     xml:
       name: Transactions
       
@@ -208,8 +239,7 @@ definitions:
     xml:
       name: Details
       
-      
-  TransactionDetail:
+  TransactionsDetail:
     type: object
     properties:
       transactionId:
@@ -236,8 +266,8 @@ definitions:
         description: account balance after transaction
         example: 2082.79
     xml:
-      name: Transaction
-      
+      name: Transactions
+    
       
   Categories:
     type: array
