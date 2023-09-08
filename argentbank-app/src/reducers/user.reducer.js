@@ -15,6 +15,7 @@ export const userReducer = createReducer(initialStateUser, (builder) => {
   return builder
     .addCase(getUser, (draft) => {
       draft.isLoading = true
+      
       return
     })
     .addCase(getUserSuccess, (draft, action) => {
@@ -26,7 +27,7 @@ export const userReducer = createReducer(initialStateUser, (builder) => {
     })
     .addCase(getUserError, (draft, action) => {
       draft.isLoading = false
-      draft.isLogged = false
+      draft.isLogged = true
       draft.user = {}
       draft.error = action.payload
       return
@@ -40,16 +41,19 @@ export const userReducer = createReducer(initialStateUser, (builder) => {
     })
     .addCase(editUser, (draft) => {
       draft.isLoading = true
+      draft.isLogged = true
       return
     })
     .addCase(editUserSuccess, (draft, action) => {
       draft.isLoading = false
+      draft.isLogged = true
       draft.user = action.payload
       draft.error = ''
       return
     })
     .addCase(editUserError, (draft, action) => {
       draft.isLoading = false
+      draft.isLogged = true
       draft.user = {}
       draft.error = action.payload
       return

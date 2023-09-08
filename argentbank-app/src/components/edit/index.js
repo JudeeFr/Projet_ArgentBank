@@ -15,14 +15,16 @@ export default function Edit() {
   const dispatch = useDispatch()
 
   const edit = () => {
+    
     dispatch(editProfile(newUsername))
-    var msg="Your Username has been modified, please log in again.";
+    setShowEdit(false)
+    var msg="Your Username has been modified.";
        alert(msg);
   }
 
   return (
       <div>
-          <form style={{ display: !showEdit ? 'none' : '' }} 
+          <form style={{ display: !showEdit ? 'none' : '' }}  onSubmit={e => e.preventDefault()}
               className="edit-form">
                 <h1>Edit user info</h1>
             <div className="input-wrapper">

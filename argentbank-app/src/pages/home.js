@@ -6,23 +6,14 @@ import Footer from '../components/footer';
 import icon1 from '../assets/img/icon-chat.png';
 import icon2 from '../assets/img/icon-money.png';
 import icon3 from '../assets/img/icon-security.png';
-import { useSelector } from 'react-redux';
-import Dashboard from './dashboard';
-
 
 export default function Home() {
-
-  const Logged = (state) => state.user.isLogged
-  const isLogged = useSelector(Logged)
 
   return (
     <div>
       <div>
         <Header/>
-      </div>
-
-      { isLogged ? <Dashboard/> : 
-      
+      </div>    
       <div>
         <div>
           <Banner/>
@@ -50,9 +41,7 @@ export default function Home() {
               />
         </section>
       </div>
-      }
-
-      
+ 
       <footer className="footer">
         <Footer/>
       </footer>  

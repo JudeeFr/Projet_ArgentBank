@@ -7,7 +7,6 @@ import './style.css';
 
 
 export const logout = () => {
-
     localStorage.removeItem('token');     
     return (dispatch) => {
       dispatch(logOut())       
@@ -22,7 +21,7 @@ export default function Header() {
 
   const selectUser = (state) => state.user.user
   const user = useSelector(selectUser)
-     
+
   return (
     <div className='header'>
         <nav className="main-nav">

@@ -44,6 +44,7 @@ export const getProfile = (token) => {
 }
 
 export const editProfile = (userName) => {
+  
   const token = localStorage.getItem('token')
   return (dispatch) => {
     dispatch(editUser())
