@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { getToken } from '../../app/Api';
+import { getToken } from '../../redux/app/Api';
 import './style.css';
 import { Navigate } from "react-router-dom";
 import Header from '../header';

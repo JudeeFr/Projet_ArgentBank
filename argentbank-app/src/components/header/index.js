@@ -2,7 +2,7 @@ import React  from 'react';
 import { Link } from 'react-router-dom';
 import logo from "../../assets/img/argentBankLogo.png";
 import { useDispatch, useSelector } from 'react-redux';
-import { logOut } from '../../actions/logout.action';
+import { logOut } from '../../redux/actions/logout.action';
 import './style.css';
 
 

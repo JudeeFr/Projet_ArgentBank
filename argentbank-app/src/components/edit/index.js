@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import './style.css';
-import { editProfile } from '../../app/Api';
+import { editProfile } from '../../redux/app/Api';
 
 
 export default function Edit() {
