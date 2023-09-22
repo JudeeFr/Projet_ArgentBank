@@ -22,10 +22,10 @@ export default function LoginForm() {
       return < Navigate to="/dashboard" />
     }
   return ( 
-    <div>
+    <div className="login">
         <div>
         <Header />
-        </div>
+        
       <div className="sign-in-content">
         <i className="fa fa-user-circle sign-in-icon"></i>
         <h1>Sign In</h1>
@@ -60,6 +60,7 @@ export default function LoginForm() {
           <button className="sign-in-button" type='submit'>Sign In</button>              
         </form>
       </div>  
+      </div>
       <div>
       <Footer/>
       </div>

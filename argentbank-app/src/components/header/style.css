@@ -2,6 +2,10 @@
     flex: 1;
 }
 
+.header {
+    background-color: white !important;
+}
+
 .bg-dark {
     background-color: #12002b;
 }

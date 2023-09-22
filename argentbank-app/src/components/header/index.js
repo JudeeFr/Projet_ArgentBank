@@ -35,7 +35,7 @@ export default function Header() {
                 <div  className="main-nav-item">
                    <Link to="/dashboard">
                     <i className="fa fa-user-circle"></i>
-                   <p>{user.body.firstName}</p>
+                   <p>{user.body.userName}</p>
                    </Link>
                 </div>    
                 <div className="main-nav-item" onClick={() => dispatch(logout())}>

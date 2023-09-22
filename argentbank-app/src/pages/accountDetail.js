@@ -10,6 +10,7 @@ import { useEffect } from 'react';
 import close from '../assets/img/close.png'
 import { useSelector } from 'react-redux';
 
+
 export default function AccountDetail() {
   // utilisation de la fonction filter pour afficher le compte selon l'id et de useparams pour récupérer l'id au clic de la page dashboard
 	let { id } = useParams();
@@ -26,61 +27,68 @@ export default function AccountDetail() {
 		return null;
 	}
 
-  const selectUser = (state) => state.user.user
-  const user = useSelector(selectUser)
-  if (user === undefined) {
-    return <Navigate to="/" />
-  }
+ 
+  const Logged = (state) => state.user.isLogged
+  const isLogged = useSelector(Logged)  
+
   return (
-    <div>  
+    <div className='account_page'>  
+      
       <div >   
         <Header/>
-      </div>      
-      <div onClick={()=> navigate('/dashboard')}>
+      </div>  
+      { isLogged ?
+      <div className='account_section'>    
+          <div onClick={()=> navigate('/dashboard')}>
 
-        <Account
-        title={account.title}
-        amount={account.amount}
-        description={account.description}
-        icon={close}
+              <Account
+              title={account.title}
+              amount={account.amount}
+              description={account.description}
+              icon={close}
+            
+            />
+          </div>   
+
+          <div className='grid'>
+            <div className='col_1'>
+              Date 
+            </div>
+            <div className='col_2'>
+              Description
+            </div>
+            <div className='col_3'>
+              Amount
+            </div>
+            <div className='col_4'>
+              Balance
+            </div>
+            <div className='col_5'>
+            </div>
+          </div>
+          
+          <div className="list">
+            {transactions.map((transaction, index) => (
+              <div key={index}>
+                <Collapse
+              date={transaction.date}
+              description={transaction.description}
+              amount={transaction.amount}
+              balance={transaction.balance}
+              type={transaction.type}
+              category={transaction.category}
+              note={transaction.note}
+              />
+              </div>
+            ))}
+          </div>
         
-        />
-      </div>   
-
-      <div className='grid'>
-        <div className='col_1'>
-          Date 
-        </div>
-        <div className='col_2'>
-          Description
-        </div>
-        <div className='col_3'>
-          Amount
-        </div>
-        <div className='col_4'>
-          Balance
-        </div>
-        <div className='col_5'>
-        </div>
       </div>
       
-      <div className="list">
-			{transactions.map((transaction, index) => (
-				<div key={index}>
-					<Collapse
-        date={transaction.date}
-        description={transaction.description}
-        amount={transaction.amount}
-        balance={transaction.balance}
-        type={transaction.type}
-        category={transaction.category}
-        note={transaction.note}
-        />
-				</div>
-			))}
-		  </div>
-        
-      
+      :
+        < Navigate to="/" replace={true}/>
+    }
+
       <div>  
         <Footer/>
       </div>
