@@ -42,7 +42,7 @@ export default function Home() {
         </section>
       </div>
  
-      <footer className="footer">
+      <footer >
         <Footer/>
       </footer>  
     </div>
