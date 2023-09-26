@@ -65,7 +65,7 @@ paths:
         - Bearer: []
 
         
-  /user//accounts/accountId/transactions/{transactionId}:
+  /user/accounts/accountId/transactions/{transactionId}:
     get:
       tags:
         - Transaction
