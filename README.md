@@ -34,15 +34,21 @@ Goals:
 - [ ] Clone repository : https://github.com/JudeeFr/Projet_ArgentBank
 
 ## Install and launch back-end
-- [ ] Use node version 12
+- [ ] Use node version 12  
+    *install nvm (npm install nvm)
+    *copy paste this code on Terminal :
+        export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 - [ ] Launch MongoDB
 - [ ] `npm install` to install dependencies
 - [ ] `npm run dev:server` to start local dev server (port 3001)  
 - [ ] `npm run populate-db` to populate database with two users
 
 ## Install and launch front-end
-- [ ] use node version 12
 - [ ] `cd argentbank-app`
+- [ ] use node version 12
+    *install nvm (npm install nvm)
+    *copy paste this code on Terminal :
+        export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 - [ ] `npm start` to launch application
 
 

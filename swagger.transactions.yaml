@@ -65,7 +65,7 @@ paths:
         - Bearer: []
 
         
-  /user/accounts/transactions/{transactionId}:
+  /user/accounts/{accountId}/transactions/{transactionId}:
     get:
       tags:
         - Transaction
@@ -187,6 +187,7 @@ definitions:
           $ref: '#/definitions/TransactionsDetail'
     xml:
       name: Account
+      
   ResponseTransactions:
     type: object
     properties:
@@ -218,7 +219,7 @@ definitions:
         format: string
         example: details successfully recovered
       schema:
-        $ref: '#/definitions/Details'
+        $ref: '#/definitions/TransactionsDetail'
     xml:
       name: Details
       
@@ -265,23 +266,6 @@ definitions:
         format: int64
         description: account balance after transaction
         example: 2082.79
-    xml:
-      name: Transactions
-    
-      
-  Categories:
-    type: array
-    items:
-      $ref: '#/definitions/List'
-    xml:
-      name: Categories
-  Details:
-    type: object
-    properties:
-      transactionId:
-        type: string
-        description: transaction ID
-        example: uT20211105df8
       type:
         type: string
         description: transaction type
@@ -296,7 +280,15 @@ definitions:
         example: >-
           Lorem ipsum...
     xml:
-      name: Details
+      name: Transactions
+    
+      
+  Categories:
+    type: array
+    items:
+      $ref: '#/definitions/List'
+    xml:
+      name: Categories
       
       
   EditDetails:
