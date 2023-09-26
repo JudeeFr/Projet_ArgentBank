@@ -21,7 +21,7 @@ paths:
         '200':
           description: User accounts retrieved successully
           schema:
-            $ref: '#/definitions/ResponseAccounts'
+            $ref: '#/definitions/Accounts'
         '400':
           description: Invalid Fields
         '500':
@@ -56,7 +56,7 @@ paths:
         '200':
           description: successful operation
           schema:
-            $ref: '#/definitions/ResponseTransactions'
+            $ref: '#/definitions/ResponseAccounts'
         '400':
           description: Invalid values
         '500':
@@ -87,7 +87,7 @@ paths:
         '200':
           description: successful operation
           schema:
-            $ref: '#/definitions/ResponseDetails'
+            $ref: '#/definitions/ResponseDetailsTransactionId'
         '400':
           description: Invalid values
         '500':
@@ -187,8 +187,32 @@ definitions:
           $ref: '#/definitions/TransactionsDetail'
     xml:
       name: Account
+  Accounts:
+    type: object
+    properties:
+      accountId:
+        type: string
+        description: account ID
+        example: uT20211105df8
+      title:
+        type: string
+        description: account title
+        example: Argent Bank Checking
+      amount:
+        type: integer
+        format: int64
+        description: account amount
+        example: 5  
+      description:
+        type: string
+        description: account description
+        example: Available Balance
+    xml:
+      name: Accounts
       
-  ResponseTransactions:
+
+  
+  ResponseDetailsTransactionId:
     type: object
     properties:
       status:
@@ -198,14 +222,11 @@ definitions:
       message:
         type: string
         format: string
-        example: transactions successfully recovered
-      body:
-        type: array
-        items:
-          $ref: '#/definitions/TransactionsDetail'
+        example: details successfully recovered
+      schema:
+        $ref: '#/definitions/DetailsTransactionId'
     xml:
-      name: Transactions
-      
+      name: Details    
       
   ResponseDetails:
     type: object
@@ -219,10 +240,11 @@ definitions:
         format: string
         example: details successfully recovered
       schema:
-        $ref: '#/definitions/TransactionsDetail'
+        $ref: '#/definitions/Details'
     xml:
       name: Details
       
+   
       
   ResponseCategories:
     type: object
@@ -266,6 +288,43 @@ definitions:
         format: int64
         description: account balance after transaction
         example: 2082.79
+    xml:
+      name: Transactions
+    
+      
+  Categories:
+    type: array
+    items:
+      $ref: '#/definitions/List'
+    xml:
+      name: Categories
+  
+  DetailsTransactionId:
+    type: object
+    properties:
+      transactionId:
+        type: string
+        description: transaction ID
+        example: uT20211105df8
+      date:
+        type: string
+        format: date-time
+        description: transaction date
+        example: '2020-06-20T12:57:19.005Z'
+      description:
+        type: string
+        description: transaction description
+        example: Golden Sun Bakery
+      amount:
+        type: integer
+        format: int64
+        description: transaction amount
+        example: 5
+      balance:
+        type: integer
+        format: int64
+        description: account balance after transaction
+        example: 2082.79  
       type:
         type: string
         description: transaction type
@@ -280,15 +339,30 @@ definitions:
         example: >-
           Lorem ipsum...
     xml:
-      name: Transactions
-    
-      
-  Categories:
-    type: array
-    items:
-      $ref: '#/definitions/List'
+      name: Details
+  
+  Details:
+    type: object
+    properties:
+      transactionId:
+        type: string
+        description: transaction ID
+        example: uT20211105df8
+      type:
+        type: string
+        description: transaction type
+        example: Electronic
+      category:
+        type: string
+        description: transaction category
+        example: Food
+      notes:
+        type: string
+        description: transaction notes
+        example: >-
+          Lorem ipsum...
     xml:
-      name: Categories
+      name: Details
       
       
   EditDetails:
