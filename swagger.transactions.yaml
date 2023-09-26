@@ -302,6 +302,10 @@ definitions:
   DetailsTransactionId:
     type: object
     properties:
+      accountId:
+        type: string
+        description: account ID
+        example: uT20211105df8
       transactionId:
         type: string
         description: transaction ID
@@ -344,6 +348,10 @@ definitions:
   Details:
     type: object
     properties:
+      accountId:
+        type: string
+        description: account ID
+        example: uT20211105df8
       transactionId:
         type: string
         description: transaction ID
