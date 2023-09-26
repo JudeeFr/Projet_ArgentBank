@@ -65,7 +65,7 @@ paths:
         - Bearer: []
 
         
-  /user/accounts/accountId/transactions/{transactionId}:
+  /user/accounts/{accountId}/transactions/{transactionId}:
     get:
       tags:
         - Transaction
@@ -81,6 +81,11 @@ paths:
         - name: transactionId
           in: path
           description: Transaction ID
+          required: true
+          type: string
+        - name: accountId
+          in: path
+          description: Account ID
           required: true
           type: string
       responses:
@@ -109,6 +114,11 @@ paths:
         - name: transactionId
           in: path
           description: Transaction ID
+          required: true
+          type: string
+        - name: accountId
+          in: path
+          description: Account ID
           required: true
           type: string
         - name: Details
@@ -302,10 +312,6 @@ definitions:
   DetailsTransactionId:
     type: object
     properties:
-      accountId:
-        type: string
-        description: account ID
-        example: uT20211105df8
       transactionId:
         type: string
         description: transaction ID
@@ -348,10 +354,6 @@ definitions:
   Details:
     type: object
     properties:
-      accountId:
-        type: string
-        description: account ID
-        example: uT20211105df8
       transactionId:
         type: string
         description: transaction ID
